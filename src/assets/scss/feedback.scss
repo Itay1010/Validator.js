@@ -1,0 +1,17 @@
+form.feedback-form-selector {
+  & > {
+    .invalid-container {
+      outline: 2px solid var(--error-color);
+    }
+    input, select, textarea {
+      & + .feedback {
+        color: var(--error-color);
+        display: inline-block;
+      }
+
+      &:not(.invalid) + .feedback {
+        display: none;
+      }
+    }
+  }
+}
