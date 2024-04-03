@@ -13,3 +13,4 @@ HTML attributes or JavaScript options.
 * Cleanup code + files
 * Add option for preset pattern + pass pattern
 * Add to this readme file
+* Comments
