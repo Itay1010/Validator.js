@@ -14,7 +14,7 @@ dist-ssr
 
 # testing files
 index.html
-index.js
+/index.js
 
 # Editor directories and files
 .vscode/*
