@@ -157,7 +157,7 @@ const obj = {
         //TODO: add option for preset pattern + pass pattern
         if(!pattern) //Match all if nothing was passed
             return /.*/gmi
-        return typeof pattern !== 'RegExp' ?  new RegExp(pattern) : pattern
+        return typeof pattern !== 'RegExp' ? new RegExp(pattern) : pattern
     },
 
     submit(fn) {

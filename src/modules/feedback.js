@@ -20,19 +20,22 @@ export const feedback = {
 
     listeners() {
         this.context.form.addEventListener('invalid', this.onInvalid, true)
-
     },
 
     onInvalid(ev) {
-        const sibling = ev.target.nextElementSibling
-        if(!sibling?.classList.contains(this.selectorUnique)) {
-            ev.target.insertAdjacentHTML('afterEnd', `<div class="${this.selector} ${this.selectorUnique}">${ev.target.validationMessage}</div>`)
-        }
+        const {target} = ev
+        const sibling = target.nextElementSibling
+        //Timeout 0 used to keep the value of "target.validationMessage" up to date
+        setTimeout(() => {
+            if(!sibling?.classList.contains(this.selectorUnique)) {
+                target.insertAdjacentHTML('afterEnd', `<div class="${this.selector} ${this.selectorUnique}">${target.validationMessage}</div>`)
+            }
+        }, 0)
     },
 
     setCssCustomProps() {
         Object.keys(this.cssProps).forEach(key => {
-            this.context.form.style.setProperty('--'+key, this.cssProps[key])
+            this.context.form.style.setProperty('--' + key, this.cssProps[key])
         })
         this.context.form.classList.add(this.selectorForFeedback)
     },
