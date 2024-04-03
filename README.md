@@ -11,6 +11,6 @@ HTML attributes or JavaScript options.
 
 # TODO
 * Cleanup code + files
-* Add option for preset pattern + pass pattern
+* ~~Add option for preset pattern + pass pattern~~
 * Add to this readme file
 * Comments
