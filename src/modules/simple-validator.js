@@ -1,3 +1,4 @@
+import {_dev_errors_} from "../lang/en";
 
 const obj = {
     init() {
@@ -8,12 +9,10 @@ const obj = {
 
     setInvalidListener() {
         this.form?.addEventListener('invalid', this.onInvalid, true)
-        if(this.submitUserFn && typeof this.submitUserFn === 'function')
-            this.form?.addEventListener('submit', this.submitUserFn)
     },
 
     onInvalid(ev) {
-        if(this.hideDefaultInvalid) {
+        if(this.hideDefaultInvalid || this.showFeedback) {
             ev.preventDefault()
             const invalids = this.getInvalids()
             //focus the first invalid input only at the last invalid event
@@ -131,7 +130,14 @@ const obj = {
                 case 'required':
                     return (typeof type === 'number') ? (!val && val !== 0) : !val?.trim()
                 case 'pattern':
-                    return !this.getPattern(fieldData.pattern).exec(val)
+                    return !this.getPattern(fieldData.pattern).exec(val)?.length
+                case 'matches':
+                    try {
+                        return !fieldData.matches.every(regexKey => this.regexs[regexKey].exec(val)?.length)
+                    } catch (e) {
+                        throw new Error(_dev_errors_.incorrectMatchesKey)
+                        return false
+                    }
                 default:
                     return false
             }
@@ -145,16 +151,17 @@ const obj = {
         }
     },
 
-    getPattern(patternOrKey) {
+    getPattern(pattern) {
         //TODO: add option for preset pattern + pass pattern
-        return /.*/gmi
+        if(!pattern) //Match all if nothing was passed
+            return /.*/gmi
+        return typeof pattern !== 'RegExp' ?  new RegExp(pattern) : pattern
     },
 
     submit(fn) {
         this.submitUserFn = fn
         this.form.dispatchEvent(new CustomEvent('submit', {cancelable: true}))
     },
-
 }
 
 export default obj

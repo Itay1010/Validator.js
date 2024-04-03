@@ -9,6 +9,7 @@ const defaultConfig = {
     trackingClass: btoa(Date.now() + ''),
     tags: ['INPUT', 'SELECT', 'TEXTAREA'],
     changeEvTags: ['SELECT'],
+    regexs: {text: /[a-zA-Z]+/gim, number: /\d+/gmi, email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/gmi},
 }
 
 export default function Validator(selector, options = {}) {
