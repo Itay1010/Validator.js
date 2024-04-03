@@ -122,7 +122,7 @@ const obj = {
             let val = el.value
             let type = 'string'
             const parsedInt = parseFloat(val)
-            if(!isNaN(parsedInt)) {
+            if(el.type === 'number' && !isNaN(parsedInt)) {
                 val = parsedInt
                 type = 'number'
             }
