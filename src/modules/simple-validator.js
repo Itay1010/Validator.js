@@ -119,16 +119,20 @@ const obj = {
         }
 
         const invalid = Object.keys(fieldData).some(key => {
-            const val = el.value
-            const type = typeof el.value
-
+            let val = el.value
+            let type = 'string'
+            const parsedInt = parseFloat(val)
+            if(!isNaN(parsedInt)) {
+                val = parsedInt
+                type = 'number'
+            }
             switch (key) {
                 case 'min':
-                    return (typeof type === 'number') ? (fieldData.min > val) : (fieldData.min > val?.length)
+                    return (type === 'number') ? (fieldData.min > val) : (fieldData.min > val?.length)
                 case 'max':
-                    return (typeof type === 'number') ? (val > fieldData.max) : (val?.length > fieldData.max)
+                    return (type === 'number') ? (val > fieldData.max) : (val?.length > fieldData.max)
                 case 'required':
-                    return (typeof type === 'number') ? (!val && val !== 0) : !val?.trim()
+                    return (type === 'number') ? (!val && val !== 0) : !val?.trim()
                 case 'pattern':
                     return !this.getPattern(fieldData.pattern).exec(val)?.length
                 case 'matches':
@@ -136,12 +140,10 @@ const obj = {
                         return !fieldData.matches.every(regexKey => this.regexs[regexKey].exec(val)?.length)
                     } catch (e) {
                         throw new Error(_dev_errors_.incorrectMatchesKey)
-                        return false
                     }
                 default:
                     return false
             }
-
         })
         if(invalid) {
             //We need to set something here to mark it as invalid, so we set it to a specific identifier, that way we can know it's not an HTML invalid later.
