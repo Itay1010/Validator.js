@@ -186,21 +186,25 @@ const obj = {
                         invalidMsg = _default_errors_.tooShort.replace('[min]', fieldData.min || 'as low as you want').replace('[max]', fieldData.max || 'as high as you want')
                         return true
                     }
+                    break
                 case 'max':
                     if((type === 'number') ? (val > fieldData.max) : (val?.length > fieldData.max)) {
                         invalidMsg = (_default_errors_.tooLong).replace('[min]', fieldData.min || 'as low as you want').replace('[max]', fieldData.max || 'as high as you want')
                         return true
                     }
+                    break
                 case 'required':
                     if((type === 'number') ? (!val && val !== 0) : !val?.trim()) {
                         invalidMsg = (_default_errors_.valueMissing)
                         return
                     }
+                    break
                 case 'pattern':
                     if(!this.getPattern(fieldData.pattern).exec(val)?.length) {
                         invalidMsg = (_default_errors_.typeMismatch[el.type])
                         return
                     }
+                    break
                 case 'matches':
                     try {
                         if(!fieldData.matches.every(regexKey => this.regexs[regexKey].exec(val)?.length)) {
@@ -210,6 +214,7 @@ const obj = {
                     } catch (e) {
                         throw new Error(_dev_errors_.incorrectMatchesKey)
                     }
+                    break
                 default:
                     return false
             }
@@ -232,7 +237,7 @@ const obj = {
     },
 
     /**
-     * Function for programmatically submitting the form. Has option to pass a function to run on submittion.
+     * Function for programmatically submitting the form. Has option to pass a function to run on submitting.
      */
     submit(fn = null) {
         if(typeof fn === 'function')

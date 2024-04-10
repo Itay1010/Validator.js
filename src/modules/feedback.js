@@ -31,7 +31,7 @@ export const feedback = {
         //Timeout 0 used to keep the value of "target.validationMessage" up to date
         setTimeout(() => {
             if(!sibling?.classList.contains(this.selectorUnique)) {
-                target.insertAdjacentHTML('afterEnd', `<div class="${this.selector} ${this.selectorUnique}">${target.validationMessage}</div>`)
+                target.insertAdjacentHTML('afterend', `<div class="${this.selector} ${this.selectorUnique}">${target.validationMessage}</div>`)
             }
         }, 0)
     },

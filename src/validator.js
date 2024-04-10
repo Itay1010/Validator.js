@@ -5,7 +5,6 @@
  */
 import {_dev_errors_} from "./lang/en.js"
 import simpleValidator from "./modules/simple-validator";
-import {feedback} from "./modules/feedback";
 
 //Default config. values here should not be overwritten.
 const defaultConfig = {
@@ -21,7 +20,7 @@ const defaultConfig = {
  * Constructor for the validator.
  *
  * This function must be called with the "new" keyword. Returns an instance of the validator configured with the options passed to it.
- * @param {string} selector - The CSS selector to identify the input element.
+ * @param {string} selector - The CSS selector to identify the form element.
  * @param {object} options - Options object for configuring the validator behavior.
  * @param {boolean} options.showFeedback - Whether to show custom feedback on invalid inputs.
  * @param {boolean} options.hideDefaultInvalid - Whether to hide default invalid messages.
