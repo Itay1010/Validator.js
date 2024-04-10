@@ -46,7 +46,7 @@ The constructor for creating an instance of the validator based on the passed op
 
 **selector**\
 Type: `string`\
-Required: `true`\
+Required\
 Selector for the Html form element to validate.
 
 **options**\
