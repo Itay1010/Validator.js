@@ -13,10 +13,6 @@ dist-ssr
 *.local
 vite.config.js
 
-# testing files
-index.html
-/index.js
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
