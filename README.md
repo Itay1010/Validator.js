@@ -10,7 +10,7 @@ HTML attributes or JavaScript options.
 <!-- TOC -->
 
 # TODO
-* Cleanup code + files
+* ~~Cleanup code + files~~
 * ~~Add option for preset pattern + pass pattern~~
 * Add to this readme file
 * Comments

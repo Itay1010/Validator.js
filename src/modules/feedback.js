@@ -1,3 +1,6 @@
+/**
+ * A feedback module for extending the default HTML5 validation. Mostly just added a box with the invalid text instead of showing it in a popup.
+ */
 import '../assets/scss/feedback.scss'
 
 export const feedback = {
