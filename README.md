@@ -46,35 +46,41 @@ The constructor for creating an instance of the validator based on the passed op
 
 **selector**\
 Type: `string`\
+Required: `true`\
 Selector for the Html form element to validate.
 
 **options**\
 Type: `object`\
+Default: `N\A`\
 Options object for configuring the validator behavior.
 
 **options.showFeedback**\
 Type: `boolean`\
+Default: `false`\
 Whether to show custom feedback on invalid inputs.
 
 **options.hideDefaultInvalid**\
 Type: `boolean`\
+Default: `false`\
 Whether to hide default invalid messages.
 
 **options.submit**\
 Type: `Function`\
+Default: `N\A`\
 The function to call when the form is submitted.
 
 **options.fields**\
 Type: `object`\
+Default: `N\A`\
 The object containing field configuration.
 
+- **required** `boolean`: Whether the input is required or not.
+- **invalidMessage** `string`: Custom message to display on invalid input.
 - **min** `number`: The minimum value allowed for the input. Can be for either a number input or a text input.
 - **max** `number`: The maximum value allowed for the input. Can be for either a number input or a text input.
-- **required** `boolean`: Whether the input is required or not.
-- **noValidate** `boolean`: Whether to skip validation for this input.
-- **invalidMessage** `string`: Custom message to display on invalid input.
 - **pattern** `string`: Regular expression pattern validating the input.
 - **matches** `Array`: Array of predefined regular expression to match the input against. Can be any one or more of the following: text, number, email.
+- **noValidate** `boolean`: Whether to skip validation for this input.
 
 # TODO
 * ~~Cleanup code + files~~
